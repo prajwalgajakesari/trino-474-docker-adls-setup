@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  trino:
+    image: trinodb/trino:474
+    container_name: trino
+    user: "1000:1000"               # run as 'trino' user (UID 1000) to match file ownership (optional)
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./etc:/etc/trino            # mount our config directory
+      - ./data:/data                # mount data directory for metastore and temp
